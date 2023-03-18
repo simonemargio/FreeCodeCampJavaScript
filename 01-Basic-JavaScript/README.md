@@ -39,4 +39,4 @@ In summary, `let` should be used when you need to re-assign the value of a varia
 ## Using "" and ''
 In JS they have the same purpose for strings.
 - var x = "This is a string"
-- var x = 'This is a string"
+- var x = 'This is a string'
