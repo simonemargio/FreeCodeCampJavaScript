@@ -1,42 +1,101 @@
 # Notes
 
-## Difference between let and const
-Const has all the awesome features that let has, with the added bonus that variables declared using const are read-only. They are a constant value, which means that once a variable is assigned with const, it cannot be reassigned.
-Also, variables declared by let are only available inside the block where they're defined. Variables declared by var are available throughout the function in which they're declared.
+## var, let, const
 
-ChatGPT explanation
-```
-In JavaScript, `let` and `const` are used for declaring variables, but with some differences:
+### var
+A var variable, declared inside a function, has a functional scope: it is not accessible from the outside, it can only be used locally inside the function. The functional scope is therefore also a local scope.
 
-1. `let` is used to declare variables with a block scope, which means they are only accessible within the block they were defined in or any nested blocks. `let` allows the value of the variable to be changed. Example: 
+Instead, created outside a function, this variable will be accessible globally and therefore also within a function. In this case, it is said to have a global scope: global scope.
 
-
-let a = 10;
-if (true) {
-  let a = 20; // "a" is a new block-scope variable
-  console.log(a); // output: 20
-}
-console.log(a); // output: 10
-
-2. `const` is also used to declare variables with a block scope. However, once the variable is assigned a value, it cannot be re-assigned. The value assigned to a `const` variable remains unchanged. Example:
-
-
-const a = 10;
-if (true) {
-  const a = 20; // "a" is a new block-scope variable with a value of 20
-  console.log(a); // output: 20
-}
-console.log(a); // output: 10
-
-
-3. `let` variables can be declared without being immediately assigned a value, whereas `const` variables must always be assigned a value when they are declared.
-
-4. `let` variables can be declared multiple times within the same block, but `const` variables cannot be re-declared.
-
-In summary, `let` should be used when you need to re-assign the value of a variable, and `const` should be used when you want to declare a variable with a constant value that cannot be re-assigned.
+```js
+var greeting="Hello Simo!";
+function mioesempio(){
+	var hello="Hi";
+}​
+console.log(greeting);
+console.log(hello);
 ```
 
-## Using "" and ''
-In JS they have the same purpose for strings.
-- var x = "This is a string"
-- var x = 'This is a string'
+Here *greeting* is global while *hello* is local, in fact the second print gives an error because no *hello* variable is defined.
+
+
+### let
+A variable declared with the let keyword is bound to the block in which it is declared. Thus, if defined within the curly braces, it is only accessible within the curly braces.
+
+A variable declared with let cannot be re-declared within the same scope, but only in another scope (in a different block).
+
+A variable identified with let can be updated.
+
+A let variable must always be initialized, otherwise, we get an error.
+
+
+### const
+This type of variable, like let variables, has block scope, but unlike let, it cannot be updated or redeclared. Const stands for constant, so its value cannot change.
+
+Each declaration of type const must therefore always be initialized, at the time of the declaration.
+
+Const variables have a peculiarity: if it is true that a variable declared with const cannot be updated, its properties can be changed. Example:
+
+```js
+const hey = {
+  message: "Hello Simone!",
+  times: 4
+}
+
+hey.message = "How are u? :3";
+```
+That's right.
+
+Summing up:
+- Variables of type var have global or function (local) scope, while those declared with let and const have block (local) scope.
+- Var variables can be updated or redeclared within their scope.
+- Let variables can be updated but not redeclared.
+- Const variables cannot be updated or redeclared.
+- The var variables are automatically initialized with undefined, while the let and const variables are not initialized.
+- The variables var and let can be declared without being initialized, const must be initialized during its declaration.
+
+## Push, pop, shift and unshift Array
+
+### Push
+An easy way to append data to the end of an array is via the push() function.  
+.push() takes one or more parameters and "pushes" them onto the end of the array.  
+
+### Unshift
+.unshift() works exactly like .push(), but instead of adding the element at the end of the array, unshift() adds the element at the beginning of the array.
+
+### Pop
+.pop() is used to pop a value off of the end of an array. We can store this popped off value by assigning it to a variable. In other words, .pop() removes the last element from an array and returns that element.
+
+### Shift
+.shift() works just like .pop(), except it removes the first element instead of the last.
+
+
+## Comparisons ( == , === , != , !==)
+
+In order for JavaScript to compare two different data types (for example, numbers and strings), it must convert one type to another. This is known as Type Coercion. Once it does, however, it can compare terms as follows:
+
+```js
+1   ==  1  // true
+1   ==  2  // false
+1   == '1' // true
+"3" ==  3  // true
+```
+
+
+Strict equality (===) is the counterpart to the equality operator (==). However, unlike the equality operator, which attempts to convert both values being compared to a common type, the strict equality operator does not perform a type conversion.
+
+```js
+3 ===  3  // true
+3 === '3' // false
+```
+
+For != and !== they work the same way with the semantics of different.
+
+## Type
+
+In JavaScript, you can determine the type of a variable or a value with the typeof operator, as follows:
+```js
+typeof 3   // Return string Number
+typeof '3' // Return string String
+typeof 3 
+```
