@@ -70,8 +70,9 @@ An easy way to append data to the end of an array is via the push() function.
 .shift() works just like .pop(), except it removes the first element instead of the last.
 
 
-## Comparisons ( == , === , != , !==)
+## Comparisons ( == , === , != , !==, > , >= , < )
 
+### ==
 In order for JavaScript to compare two different data types (for example, numbers and strings), it must convert one type to another. This is known as Type Coercion. Once it does, however, it can compare terms as follows:
 
 ```js
@@ -81,7 +82,7 @@ In order for JavaScript to compare two different data types (for example, number
 "3" ==  3  // true
 ```
 
-
+### ===
 Strict equality (===) is the counterpart to the equality operator (==). However, unlike the equality operator, which attempts to convert both values being compared to a common type, the strict equality operator does not perform a type conversion.
 
 ```js
@@ -89,7 +90,54 @@ Strict equality (===) is the counterpart to the equality operator (==). However,
 3 === '3' // false
 ```
 
+### != and !==
+
 For != and !== they work the same way with the semantics of different.
+
+### >
+
+Like the equality operator, the greater > than operator will convert data types of values while comparing.
+
+```js
+5   >  3  // true
+7   > '3' // true
+2   >  3  // false
+'1' >  9  // false
+```
+
+### >= 
+
+Same for >=
+
+```js
+6   >=  6  // true
+7   >= '3' // true
+2   >=  3  // false
+'7' >=  9  // false
+```
+
+## <
+
+Like the equality operator, the less than operator converts data types while comparing.
+
+```js
+2   < 5 // true
+'3' < 7 // true
+5   < 5 // false
+3   < 2 // false
+'8' < 4 // false
+```
+
+## <=
+
+Like the equality operator, the less than or equal to operator converts data types.
+```js
+4   <= 5 // true
+'7' <= 7 // true
+5   <= 5 // true
+3   <= 2 // false
+'8' <= 4 // false
+```
 
 ## Type
 
