@@ -147,3 +147,77 @@ typeof 3   // Return string Number
 typeof '3' // Return string String
 typeof 3 
 ```
+
+## Objects
+
+Here's a sample cat object:
+
+```js
+const cat = {
+  "name": "Whiskers",
+  "legs": 4,
+  "tails": 1,
+  "enemies": ["Water", "Dogs"]
+};
+```
+
+In this example, all the properties are stored as strings, such as name, legs, and tails. However, you can also use numbers as properties. You **can even omit the quotes for single-word string properties**, as follows:
+
+```js
+const anotherObject = {
+  make: "Ford",
+  5: "five",
+  "model": "focus"
+};
+```
+However, if your object has any non-string properties, JavaScript will automatically typecast them as strings.
+
+### Add New Properties
+
+```js
+const myDog = {
+    "name": "Happy Coder",
+    "legs": 4,
+    "tails": 1,
+    "friends": ["freeCodeCamp Campers"]
+  };
+```
+
+Add a bark property to myDog and set it to a dog sound, such as "woof".
+
+```js
+myDog.bark = "woof";
+```
+
+### Delete Properties
+
+```js
+const ourDog = {
+  "name": "Camper",
+  "legs": 4,
+  "tails": 1,
+  "friends": ["everything!"],
+  "bark": "bow-wow"
+};
+```
+Delete the tails property from myDog. 
+
+```js
+delete myDog.tails;
+```
+
+### Testing Objects for Properties
+
+Sometimes it is useful to check if the property of a given object exists or not. We can use the .hasOwnProperty(propname) method of objects to determine if that object has the given property name. .hasOwnProperty() returns true or false if the property is found or not.
+
+```js
+const myObj = {
+  top: "hat",
+  bottom: "pants"
+};
+
+myObj.hasOwnProperty("top");
+myObj.hasOwnProperty("middle");
+```
+
+The first hasOwnProperty returns true, while the second returns false.
