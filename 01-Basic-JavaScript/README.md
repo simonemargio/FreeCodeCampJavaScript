@@ -1,4 +1,4 @@
-# Notes
+# Note
 
 ## var, let, const
 
