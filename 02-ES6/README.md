@@ -103,3 +103,81 @@ console.log(howMany("string", null, [1, 2, 3], { }));
 ```
 
 The console would display the strings You have passed 3 arguments. and You have passed 4 arguments.
+
+
+## Array ...array
+
+The spread (...) syntax allows an iterable, such as an array, to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected.
+
+```js
+const arr1 = ['JAN', 'FEB', 'MAR', 'APR', 'MAY'];
+let arr2;
+
+arr2 = [...arr1];
+```
+
+Copy arr1 in arr2.
+
+## Destructuring assignment
+
+Destructuring assignment is special syntax introduced in ES6, for neatly assigning values taken directly from an object. For example:
+
+```js
+const user = { name: 'John Doe', age: 34 };
+
+// Old in ES5
+const name = user.name;
+const age = user.age;
+
+// New in ES6
+const { name, age } = user;
+```
+
+Here, the name and age variables will be created and assigned the values of their respective values from the user object. You can see how much cleaner this is. So name would have a value of the string John Doe, and age would have the number 34. 
+
+Also destructuring allows you to assign a new variable name when extracting values. Same example:
+
+```js
+const user = { name: 'John Doe', age: 34 };
+
+
+const { name: userName, age: userAge } = user;
+```
+
+Here the value of userName would be the string John Doe, and the value of userAge would be the number 34.
+
+
+Same for destructure values from nested objects.
+
+```js
+const user = {
+  johnDoe: { 
+    age: 34,
+    email: 'johnDoe@freeCodeCamp.com'
+  }
+};
+
+// Extract the values of object properties and assign them to variables with the same name
+const { johnDoe: { age, email }} = user;
+
+// Assign an object properties' values to variables with different names
+const { johnDoe: { age: userAge, email: userEmail }} = user;
+```
+
+In some cases, you can destructure the object in a function argument itself.
+
+```js
+const profileUpdate = (profileData) => {
+  const { name, age, nationality, location } = profileData;
+
+}
+```
+This effectively destructures the object sent into the function. This can also be done in-place:
+
+```js
+const profileUpdate = ({ name, age, nationality, location }) => {
+
+}
+```
+
+When profileData is passed to the above function, the values are destructured from the function parameter for use within the function.
