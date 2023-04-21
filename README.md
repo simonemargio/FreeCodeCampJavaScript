@@ -4,7 +4,7 @@ Set of exercises and notes during the [freeCodeCamp](https://www.freecodecamp.or
 The course is divided into the following chapters:
 - [Basic JavaScript](https://github.com/simonemargio/JavaScript-freeCodeCamp/tree/main/01-Basic-JavaScript)
 - [ES6](https://github.com/simonemargio/JavaScript-freeCodeCamp/tree/main/02-ES6)
-- Regular Expressions
+- [Regular Expressions](https://github.com/simonemargio/freeCodeCamp-JavaScript/tree/main/03-Regular-Expressions)
 - Debugging
 - Basic Data Structures
 - Basic Algorithm Scripting
