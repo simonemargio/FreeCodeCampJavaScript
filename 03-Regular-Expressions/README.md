@@ -133,7 +133,119 @@ let myRegex = /[a-z0-9]/ig;
 jennyStr.match(myRegex);
 ```
 
-## Matsch single characters not specified
+## Match single characters not specified
 You cab also create a set of characters that you do not want to match. To create a negated character set, you place a caret character (^) after the opening bracket and before the characters you do not want to match.
 
 For example, */[^aeiou]/gi* matches all characters that are not a vowel.
+
+## Match characters that occur one or more times
+Sometimes, you need to match a character (or group of characters) that appears one or more times in a row. This means it occurs at least once, and may be repeated.
+
+You can use the + character to check if that is the case. Remember, the **character or pattern has to be present consecutively**. That is, the character has to repeat one after the other.
+
+For example, */a+/g* would find one match in abc and return ["a"]. Because of the +, it would also find a single match in aabc and return ["aa"].
+
+## Match characters that occur zero or more times
+Different from the character +, if we want to count the occurrence of zero value we must use the character *.
+
+```js
+let soccerWord = "gooooooooal!";
+let gPhrase = "gut feeling";
+let oPhrase = "over the moon";
+let goRegex = /go*/;
+
+soccerWord.match(goRegex);
+gPhrase.match(goRegex);
+oPhrase.match(goRegex);
+```
+
+In order, the three match calls would return the values ["goooooooo"], ["g"], and null.
+
+## Match Beginning String Patterns
+We see the caret character (^) inside a character set to create a negated character set in the form [^thingsThatWillNotBeMatched]. Outside of a character set, the caret is used to search for patterns at the beginning of strings.
+
+```js
+let firstString = "Ricky is first and can be found.";
+let firstRegex = /^Ricky/;
+firstRegex.test(firstString);
+
+let notFirst = "You can't find Ricky now.";
+firstRegex.test(notFirst);
+```
+
+The first test call would return true, while the second would return false.
+
+## Match Ending String Patterns
+You can search the end of strings using the dollar sign character $ at the end of the regex.
+
+```js
+let theEnding = "This is a never ending story";
+let storyRegex = /story$/;
+storyRegex.test(theEnding);
+let noEnding = "Sometimes a story will have to end";
+storyRegex.test(noEnding);
+```
+
+The first test call would return true, while the second would return false.
+
+## Match All Letters and Numbers
+The closest character class in JavaScript to match the alphabet is \w. This shortcut is equal to [A-Za-z0-9_]. This character class matches upper and lowercase letters plus numbers. Note, this character class also includes the underscore character (_).
+
+```js
+let longHand = /[A-Za-z0-9_]+/;
+let shortHand = /\w+/;
+
+let numbers = "42";
+let varNames = "important_var";
+
+longHand.test(numbers);
+shortHand.test(numbers);
+
+longHand.test(varNames);
+shortHand.test(varNames);
+```
+
+All four of these test calls would return true. These shortcut character classes are also known as shorthand character classes.
+
+## Match Everything But Letters and Numbers
+You can search for the opposite of the \w with \W. Note, the opposite pattern uses a capital letter. This shortcut is the same as [^A-Za-z0-9_].
+
+```js
+let shortHand = /\W/;
+let numbers = "42%";
+let sentence = "Coding!";
+
+numbers.match(shortHand);
+sentence.match(shortHand);
+```
+
+The first match call would return the value ["%"] and the second would return ["!"].
+
+## Match All Numbers
+The shortcut to look for digit characters is \d, with a lowercase d. This is equal to the character class [0-9], which looks for a single character of any number between zero and nine.
+
+## Match All Non-Numbers
+The shortcut to look for non-digit characters is \D. This is equal to the character class [^0-9], which looks for a single character that is not a number between zero and nine.
+
+## Match Whitespace
+You can search for whitespace using \s, which is a lowercase s. This pattern not only matches whitespace, but also carriage return, tab, form feed, and new line characters. You can think of it as similar to the character class [ \r\t\f\n\v].
+
+```js
+let whiteSpace = "Whitespace. Whitespace everywhere!"
+let spaceRegex = /\s/g;
+whiteSpace.match(spaceRegex);
+```
+
+This match call would return [" ", " "].
+
+## Match Non-Whitespace Characters
+Search for non-whitespace using \S, which is an uppercase s. This pattern will not match whitespace, carriage return, tab, form feed, and new line characters. You can think of it being similar to the character class [^ \r\t\f\n\v].
+
+```js
+let whiteSpace = "Whitespace. Whitespace everywhere!"
+let nonSpaceRegex = /\S/g;
+whiteSpace.match(nonSpaceRegex).length;
+```
+
+The value returned by the .length method would be 32.
+
